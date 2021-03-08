@@ -1,0 +1,9 @@
+{
+    "name": "fileManageApi",
+    "version": "1.0.0",
+    "sampleUrl": "http://127.0.0.1:5000",
+    "description": "服务端接口文档",
+    "title": "PythonServiceApi",
+    "url" : "http://127.0.0.1:5000"
+}
+

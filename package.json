@@ -1,0 +1,10 @@
+{
+    "apidoc": {
+        "title": "ServiceAPIs",
+        "url": "http://localhost:4000/file_api"
+    },
+    "scripts": {
+        "docs": "apidoc -i app/api -o docs/",
+        "dev": "venv\\Scripts\\activate && python starter.py"
+    }
+}
