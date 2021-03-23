@@ -23,7 +23,7 @@ pip install
 # 查看package.json script运行命令
 npm run dev
 
-# 全局安装nodemon
+# 全局安装apidoc
 npm install apidoc -g
 
 # 生成api文档（文档未完善）

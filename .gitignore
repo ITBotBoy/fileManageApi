@@ -13,6 +13,6 @@ __pycache__
 *.db
 *.pyc
 *.cpython-36.pyc
-app/assets/*
+app/assets
 app/config
 

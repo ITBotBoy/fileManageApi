@@ -35,25 +35,29 @@ def get_all_file():
     join_path = site_domain + current_path
     start, count = paginate()
     FileManage=FileMap[form.type.data]
+    total = get_total_nums(FileManage,True)
     if(isDelete):
-        paths = FileManage.query.filter(
+        FileObj=FileManage.query.filter(
             db.and_(
                 FileManage.folder_id == folder_id,
                 FileManage.delete_time != None
             ) if folder_id else FileManage.delete_time != None
-        ).order_by(db.desc('create_time')).offset(
+        )
+        paths = FileObj.order_by(db.desc('create_time')).offset(
             start).limit(count).all()
+        total = get_total_nums(FileManage)-total
     else:
-        paths = FileManage.query.filter(
+        FileObj=FileManage.query.filter(
             db.and_(
                 FileManage.folder_id == folder_id,
                 FileManage.delete_time == None
             ) if folder_id else FileManage.delete_time == None
-        ).order_by(db.desc('create_time')).offset(
+        )
+        paths = FileObj.order_by(db.desc('create_time')).offset(
             start).limit(count).all()
     for x in paths:
         x.path=x.path if re.search(r'http',x.path) else join_path+x.path
-    total = get_total_nums(FileManage)
+
     total_page = math.ceil(total / count)
     page = get_page_from_query()
     return json_res(count=count, items=paths, page=page, total=total, total_page=total_page)
